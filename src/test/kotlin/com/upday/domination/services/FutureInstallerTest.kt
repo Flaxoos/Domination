@@ -11,7 +11,7 @@ internal class FutureInstallerTest {
 
     @Test
     fun installDistopyianFuture() {
-        val world = futureInstaller.installDistopianFuture(Fixtures.world())
+        val world = futureInstaller.installDystopianFuture(Fixtures.world())
         assertThat(world.future).isEqualTo(Future.DYSTOPIAN)
     }
 

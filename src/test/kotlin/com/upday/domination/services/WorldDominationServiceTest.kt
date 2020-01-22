@@ -40,7 +40,7 @@ internal class WorldDominationServiceTest {
         every { worldRepository.findById(any()) } returns Optional.of(world)
         val slot = slot<World>()
         every { mediaManipulator.takeControlOfMedia(capture(slot)) } answers { slot.captured.copy(media = Media.CONTROLLED) }
-        every { futureInstaller.installDistopianFuture(capture(slot)) } answers { slot.captured.copy(future = Future.DYSTOPIAN) }
+        every { futureInstaller.installDystopianFuture(capture(slot)) } answers { slot.captured.copy(future = Future.DYSTOPIAN) }
 
         //when
         val result = worldTakeoverService.takeOverWorldWithEvil(world.id)

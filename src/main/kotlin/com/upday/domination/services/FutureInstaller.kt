@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 @Service
 class FutureInstaller {
 
-    fun installDistopianFuture(world: World) = world.copy(future = Future.DYSTOPIAN)
+    fun installDystopianFuture(world: World) = world.copy(future = Future.DYSTOPIAN)
 
     fun installBrightFuture(world: World) = world.copy(future = Future.UTOPIAN)
 

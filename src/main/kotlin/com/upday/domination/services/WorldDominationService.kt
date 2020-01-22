@@ -22,7 +22,7 @@ class WorldDominationService(
         worldRepository.findById(worldId).get().let {
             var newWorld = mediaManipulator.takeControlOfMedia(it)
             threadPoolTaskExecutor.execute(TechnologyAcceleratorJob.EvilTechnologyAcceleratorJob(world = newWorld, worldRepository = worldRepository))
-            newWorld = futureInstaller.installDistopianFuture(newWorld)
+            newWorld = futureInstaller.installDystopianFuture(newWorld)
             return worldRepository.save(newWorld)
         }
     }
