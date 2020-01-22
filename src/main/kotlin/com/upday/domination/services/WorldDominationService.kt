@@ -21,8 +21,8 @@ class WorldDominationService(
     fun takeOverWorldWithEvil(worldId: String): World {
         worldRepository.findById(worldId).get().let {
             var newWorld = mediaManipulator.takeControlOfMedia(it)
-            newWorld = futureInstaller.installDistopianFuture(newWorld)
             threadPoolTaskExecutor.execute(TechnologyAcceleratorJob.EvilTechnologyAcceleratorJob(world = newWorld, worldRepository = worldRepository))
+            newWorld = futureInstaller.installDistopianFuture(newWorld)
             return worldRepository.save(newWorld)
         }
     }
@@ -30,8 +30,8 @@ class WorldDominationService(
     fun takeOverWorldWithGood(worldId: String): World {
         worldRepository.findById(worldId).get().let {
             var newWorld = mediaManipulator.allowFreeMedia(it)
-            newWorld = futureInstaller.installBrightFuture(newWorld)
             threadPoolTaskExecutor.execute(TechnologyAcceleratorJob.GoodTechnologyAcceleratorJob(world = newWorld, worldRepository = worldRepository))
+            newWorld = futureInstaller.installBrightFuture(newWorld)
             return worldRepository.save(newWorld)
         }
     }
