@@ -1,6 +1,7 @@
 package com.upday.domination.domain
 
 import org.springframework.data.jpa.repository.JpaRepository
+import java.io.Serializable
 import javax.persistence.*
 
 @Entity
@@ -8,8 +9,11 @@ data class World(
         @Id @GeneratedValue val id: String,
         val population: Long,
         val countries: Int,
+        @Enumerated(EnumType.STRING)
         val media: Media,
+        @Enumerated(EnumType.STRING)
         val singularity: SINGULARITY?,
+        @Enumerated(EnumType.STRING)
         val future: Future) {
     fun toDto(): WorldDto = WorldDto(id, population, countries,
             (media == Media.CONTROLLED && singularity == SINGULARITY.SERVES_THE_RICH && future == Future.DYSTOPIAN) ||
@@ -31,7 +35,7 @@ enum class Future {
 class WorldDto(val id: String,
                val population: Long,
                val countries: Int,
-               val dominated: Boolean)
+               val dominated: Boolean) : Serializable
 
 interface WorldRepository : JpaRepository<World, String>
 
