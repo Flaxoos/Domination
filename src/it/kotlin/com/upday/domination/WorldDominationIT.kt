@@ -11,7 +11,6 @@ class WorldDominationIT : AbstractIntegrationTest() {
 
     @Test
     fun `world is dominated`() {
-
         given(spec)
                 .`when`().param("id", "1").put("/world")
                 .then().statusCode(HttpStatus.OK.value())

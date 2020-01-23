@@ -16,7 +16,7 @@ class WorldTakeoverController {
 
     @PutMapping
     fun takeOverTheWorld(@RequestParam id: String): ResponseEntity<WorldDto> {
-        return ResponseEntity.ok(worldDominationService.takeOverWorldWithEvil(id).toDto())
+        return ResponseEntity.ok(worldDominationService.takeOverWorldWithGood(id).toDto())
     }
 
     @GetMapping

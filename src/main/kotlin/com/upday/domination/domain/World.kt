@@ -12,19 +12,18 @@ data class World(
         @Enumerated(EnumType.STRING)
         val media: Media,
         @Enumerated(EnumType.STRING)
-        val singularity: SINGULARITY?,
+        val singularity: Singularity?,
         @Enumerated(EnumType.STRING)
         val future: Future) {
-    fun toDto(): WorldDto = WorldDto(id, population, countries,
-            (media == Media.CONTROLLED && singularity == SINGULARITY.SERVES_THE_RICH && future == Future.DYSTOPIAN) ||
-                    (media == Media.FREE && singularity == SINGULARITY.SERVES_THE_PEOPLE && future == Future.UTOPIAN))
+    fun toDto(): WorldDto = WorldDto(id = id, population = population, countries = countries,
+            dominated = (media == Media.FREE && singularity == Singularity.SERVES_THE_PEOPLE && future == Future.UTOPIAN))
 }
 
 enum class Media {
     FREE, CONTROLLED
 }
 
-enum class SINGULARITY {
+enum class Singularity {
     SERVES_THE_PEOPLE, SERVES_THE_RICH
 }
 
