@@ -16,7 +16,8 @@ data class World(
         @Enumerated(EnumType.STRING)
         val future: Future) {
     fun toDto(): WorldDto = WorldDto(id = id, population = population, countries = countries,
-            dominated = (media == Media.FREE && singularity == Singularity.SERVES_THE_PEOPLE && future == Future.UTOPIAN))
+            dominated = (media == Media.CONTROLLED && singularity == Singularity.SERVES_THE_RICH && future == Future.DYSTOPIAN) ||
+                    (media == Media.FREE && singularity == Singularity.SERVES_THE_PEOPLE && future == Future.UTOPIAN))
 }
 
 enum class Media {
